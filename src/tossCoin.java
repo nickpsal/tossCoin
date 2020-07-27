@@ -39,7 +39,8 @@ public class tossCoin extends JFrame{
         info_btn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(panel, "ΠΡΟΓΡΑΜΜΑ ΠΡΟΣΟΜΕΙΩΣΗΣ ΡΙΨΗΣ ΚΕΡΜΑΤΟΣ\nΠΡΟΓΡΑΜΜΑΤΙΣΗΣ : ΨΑΛΤΑΚΗΣ ΝΙΚΟΛΑΟΣ",
+                JOptionPane.showMessageDialog(panel, "ΠΡΟΓΡΑΜΜΑ ΠΡΟΣΟΜΕΙΩΣΗΣ ΡΙΨΗΣ ΚΕΡΜΑΤΟΣ\n" +
+                                "ΠΡΟΓΡΑΜΜΑΤΙΣΗΣ : ΨΑΛΤΑΚΗΣ ΝΙΚΟΛΑΟΣ",
                         "ΠΛΗΡΟΦΟΡΙΕΣ", JOptionPane.INFORMATION_MESSAGE);
             }
         });
@@ -49,18 +50,15 @@ public class tossCoin extends JFrame{
             public void itemStateChanged(ItemEvent e) {
                 if (comboBox1.getSelectedIndex() == 1){
                     comboBox2.setSelectedIndex(2);
-                    player1 = comboBox1.getSelectedItem().toString();
-                    player2 = comboBox2.getSelectedItem().toString();
                 }else if (comboBox1.getSelectedIndex() == 2){
                     comboBox2.setSelectedIndex(1);
-                    player1 = comboBox1.getSelectedItem().toString();
-                    player2 = comboBox2.getSelectedItem().toString();
                 }else {
                     comboBox2.setSelectedIndex(0);
                 }
+                player1 = comboBox1.getSelectedItem().toString();
+                player2 = comboBox2.getSelectedItem().toString();
             }
         });
-
     }
 
     public void fillComboBox() {
