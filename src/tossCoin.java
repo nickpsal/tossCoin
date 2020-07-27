@@ -1,6 +1,8 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.util.Random;
 
 public class tossCoin extends JFrame{
@@ -20,6 +22,7 @@ public class tossCoin extends JFrame{
     private String win;
 
     public tossCoin() {
+        comboBox2.setEnabled(false);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setTitle("ΠΡΟΓΡΑΜΜΑ ΠΡΟΣΟΜΕΙΩΣΗΣ ΡΙΨΗΣ ΚΕΡΜΑΤΟΣ");
         this.setContentPane(panel);
@@ -29,10 +32,7 @@ public class tossCoin extends JFrame{
         tossCoin_btn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                boolean check = checkChoises();
-                if (check) {
-                    toss();
-                }
+                toss();
             }
         });
 
@@ -43,6 +43,22 @@ public class tossCoin extends JFrame{
                         "ΠΛΗΡΟΦΟΡΙΕΣ", JOptionPane.INFORMATION_MESSAGE);
             }
         });
+
+        comboBox1.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                if (comboBox1.getSelectedIndex() == 1){
+                    comboBox2.setSelectedIndex(2);
+                    player1 = comboBox1.getSelectedItem().toString();
+                    player2 = comboBox2.getSelectedItem().toString();
+                }else if (comboBox1.getSelectedIndex() == 2){
+                    comboBox2.setSelectedIndex(1);
+                    player1 = comboBox1.getSelectedItem().toString();
+                    player2 = comboBox2.getSelectedItem().toString();
+                }
+            }
+        });
+
     }
 
     public void fillComboBox() {
@@ -52,24 +68,6 @@ public class tossCoin extends JFrame{
         comboBox2.addItem("ΚΑΝΕ ΤΗΝ ΕΠΙΛΟΓΗ ΣΟΥ");
         comboBox2.addItem("HEADS");
         comboBox2.addItem("TAILS");
-    }
-
-    public boolean checkChoises() {
-        boolean ok = false;
-        if ((comboBox1.getSelectedIndex() == 0) || (comboBox2.getSelectedIndex() == 0)) {
-            JOptionPane.showMessageDialog(panel, "ΔΕΝ ΕΠΙΛΈΞΑΤΕ ΝΟΜΙΣΜΑ",
-                    "ΠΡΟΣΟΧΗ", JOptionPane.INFORMATION_MESSAGE);
-            ok = false;
-        }else if (comboBox1.getSelectedIndex() == comboBox2.getSelectedIndex()){
-            JOptionPane.showMessageDialog(panel, "ΕΠΙΛΕΞΑΤΕ ΤΗΝ ΙΔΙΑ ΠΛΕΥΡΑ ΤΟΥ ΝΟΜΙΣΜΑΤΟΣ",
-                    "ΠΡΟΣΟΧΗ", JOptionPane.INFORMATION_MESSAGE);
-            ok = false;
-        }else {
-            ok = true;
-            player1 = comboBox1.getSelectedItem().toString();
-            player2 = comboBox2.getSelectedItem().toString();
-        }
-        return ok;
     }
 
     public void toss() {

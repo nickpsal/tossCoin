@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="tossCoin:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/tossCoin_jar</output-path>
+    <root id="archive" name="tossCoin.jar">
+      <element id="module-output" name="tossCoin" />
+    </root>
+  </artifact>
+</component>
