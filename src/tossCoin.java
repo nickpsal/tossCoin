@@ -55,6 +55,8 @@ public class tossCoin extends JFrame{
                     comboBox2.setSelectedIndex(1);
                     player1 = comboBox1.getSelectedItem().toString();
                     player2 = comboBox2.getSelectedItem().toString();
+                }else {
+                    comboBox2.setSelectedIndex(0);
                 }
             }
         });
